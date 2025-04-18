@@ -14,7 +14,9 @@ Run in a terminal
 python download_dataset.py
 ~~~
 Then type in terminal which one you want to test.
+
 Available datasets :
+
 ae_photos, apple2orange, summer2winter_yosemite, horse2zebra, monet2photo, cezanne2photo, ukiyoe2photo, vangogh2photo, maps, cityscapes, facades, iphone2dslr_flower, mini, mini_pix2pix, mini_colorization
 
 [^1]: [Unpaired Image-to-Image Translation using Cycle-Consistent Adversarial Networks, 
