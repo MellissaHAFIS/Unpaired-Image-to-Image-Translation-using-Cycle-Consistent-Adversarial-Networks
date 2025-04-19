@@ -1,6 +1,6 @@
 import torch
 import argparse
-from .models import Generator, Discriminator  # Importing Generator and Discriminator models
+from .models import Generator, Discriminator  # TODO Importing Generator and Discriminator models
 from .dataset import get_dataloader          # Importing function to get a DataLoader with image pairs
 from .utils import save_sample, save_model   # Importing utility functions to save samples and model checkpoints
 
