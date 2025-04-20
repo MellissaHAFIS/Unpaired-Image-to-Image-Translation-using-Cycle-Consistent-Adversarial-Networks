@@ -119,7 +119,7 @@ sympy==1.13.1
 terminado==0.18.1
 tinycss2==1.4.0
 tomli==2.2.1
-torch==2.6.0+cu126
+torch==2.6.0
 torchaudio==2.6.0+cu126
 torchvision==0.21.0+cu126
 tornado==6.4.2
