@@ -5,23 +5,30 @@ class ResnetBlock(nn.Module):
     def __init__(self, dim, norm_layer, use_dropout, padding_type='reflect'):
         super().__init__()
         self.block = []
-        p = 1
         if padding_type == 'reflect':
             self.block += [nn.ReflectionPad2d(1)]
-        # conv1
-        self.block += [nn.Conv2d(dim, dim, 3, padding=p, bias=norm_layer==nn.InstanceNorm2d),
-                       norm_layer(dim), nn.ReLU(True)]
+            conv1 = nn.Conv2d(dim, dim, 3, padding=0, bias=norm_layer == nn.InstanceNorm2d)
+        else:
+            conv1 = nn.Conv2d(dim, dim, 3, padding=1, bias=norm_layer == nn.InstanceNorm2d)
+
+        self.block += [conv1, norm_layer(dim), nn.ReLU(True)]
+
         if use_dropout:
             self.block += [nn.Dropout(0.5)]
-        # conv2
-        if padding_type=='reflect':
+
+        if padding_type == 'reflect':
             self.block += [nn.ReflectionPad2d(1)]
-        self.block += [nn.Conv2d(dim,dim,3,padding=p,bias=norm_layer==nn.InstanceNorm2d),
-                       norm_layer(dim)]
+            conv2 = nn.Conv2d(dim, dim, 3, padding=0, bias=norm_layer == nn.InstanceNorm2d)
+        else:
+            conv2 = nn.Conv2d(dim, dim, 3, padding=1, bias=norm_layer == nn.InstanceNorm2d)
+
+        self.block += [conv2, norm_layer(dim)]
+
         self.block = nn.Sequential(*self.block)
 
     def forward(self, x):
         return x + self.block(x)
+
 
 class ResnetGenerator(nn.Module):
     def __init__(self, input_nc, output_nc, ngf=64, norm_layer=nn.InstanceNorm2d,
