@@ -1,4 +1,7 @@
 """
+In the Cyclegan class we're going to create, we need to create the
+following methods to apply the dissimilarators to the Ga and Gb generators.
+
 Module: discriminators.py
 
 Defines standalone PatchGAN discriminators (D_X and D_Y) for CycleGAN-style unpaired image translation.
